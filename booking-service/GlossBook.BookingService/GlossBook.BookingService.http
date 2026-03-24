@@ -1,0 +1,6 @@
+@GlossBook.BookingService_HostAddress = http://localhost:5262
+
+GET {{GlossBook.BookingService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
