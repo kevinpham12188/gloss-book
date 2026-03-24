@@ -1,0 +1,16 @@
+services:
+
+  booking-db:
+    image: postgres:16
+    container_name: glossbook-booking-db
+    environment:
+      POSTGRES_DB: glossbook_booking
+      POSTGRES_USER: glossbook
+      POSTGRES_PASSWORD: glossbook_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - booking-db-data:/var/lib/postgresql/data
+
+volumes:
+  booking-db-data:
