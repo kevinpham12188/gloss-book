@@ -44,7 +44,11 @@ All six services, databases, Redis, and RabbitMQ start with one command
 ## Project status
 
 - [x] Schema design — all six services
-- [ ] Booking Service — REST API
+- [x] Booking Service — project scaffold
+- [x] Booking Service — appointments migration
+- [ ] Booking Service — REST API endpoints
+- [ ] Booking Service — validation and error handling
+- [ ] Booking Service — unit tests
 - [ ] Identity Service — JWT auth
 - [ ] API Gateway — YARP
 - [ ] Catalog + Inventory Services
