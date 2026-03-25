@@ -6,7 +6,7 @@ A nail salon booking and management platform built as a full microservices study
 
 GlossBook allows salon owners to manage bookings, staff schedules, and inventory. Technicians can view their daily schedule and log product usage. Clients can book appointments online and receive automated reminders.
 
-## Archirecture
+## Archirtecture
 
 Six independent microservices communicating via HTTP and async messaging:
 
@@ -43,18 +43,42 @@ All six services, databases, Redis, and RabbitMQ start with one command
 
 ## Project status
 
-- [x] Schema design — all six services
-- [x] Booking Service — project scaffold
-- [x] Booking Service — appointments migration
-- [ ] Booking Service — REST API endpoints
-- [ ] Booking Service — validation and error handling
-- [ ] Booking Service — unit tests
-- [ ] Identity Service — JWT auth
-- [ ] API Gateway — YARP
-- [ ] Catalog + Inventory Services
-- [ ] Payments Service
-- [ ] Notification Service — async messaging
-- [ ] Redis — caching + rate limiting
-- [ ] Testing — xUnit + Testcontainers
-- [ ] Observability — Serilog + OpenTelemetry
-- [ ] CI/CD — GitHub Actions
+## Build Status
+
+### Phase 1 — Schema Design
+- [x] Schema design — all 6 services
+
+### Phase 2 — Environment Setup
+- [x] macOS + Homebrew + Git + .NET 10 + Docker Desktop + VS Code + DBeaver
+
+### Phase 3 — Booking Service
+- [x] Project scaffold
+- [x] Docker PostgreSQL container (port 5433)
+- [x] Raw SQL migrations — 4 tables (appointments, staff_schedules, staff_breaks, staff_schedule_overrides)
+- [x] EF Core packages installed (v10.0.5)
+- [x] Entity models — Appointment, StaffSchedule, StaffBreak, StaffScheduleOverride
+- [ ] BookingDbContext
+- [ ] Connection string + Program.cs wiring
+- [ ] POST /appointments endpoint
+- [ ] Validation + global exception handling
+- [ ] Unit tests — xUnit
+
+### Phase 4 — Identity Service
+- [ ] JWT auth
+
+### Phase 5 — API Gateway
+- [ ] YARP
+
+### Phase 6 — Catalog + Inventory Services
+
+### Phase 7 — Payments Service
+
+### Phase 8 — Notification Service + RabbitMQ
+
+### Phase 9 — Redis
+
+### Phase 10 — Observability — Serilog + OpenTelemetry
+
+### Phase 11 — Testing — xUnit + Testcontainers
+
+### Phase 12 — CI/CD — GitHub Actions
