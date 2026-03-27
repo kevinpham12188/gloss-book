@@ -22,7 +22,7 @@ namespace GlossBook.BookingService.Controllers
         {
             var appointment = await _appointmentService.CreateAppointmentAsync(createAppointmentRequest);
             return StatusCode(201, new ApiResponse<AppointmentResponse> {
-               StatusCode = HttpStatusCode.Created,
+               StatusCode = 201,
                Message = "Appointment created successfully",
                Data = appointment 
             });
