@@ -20,9 +20,13 @@ namespace GlossBook.BookingService.Data
 
                 modelBuilder.Entity<Appointment>(entity =>
                 {
-                    entity.Property(a => a.Status).HasConversion<string>();
+                    entity.Property(a => a.Status).HasConversion<string>()
+                    .HasColumnType("appointment_status");
                     entity.Property(a => a.PriceAtBooking).HasColumnType("numeric(10,2)");
                 });
+                
+                
+                
             }
     }
 }

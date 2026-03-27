@@ -25,6 +25,7 @@ namespace GlossBook.BookingService.Services
                 Status = AppointmentStatus.Pending,
                 StartTime = createAppointmentRequest.StartTime,
                 EndTime = createAppointmentRequest.EndTime,
+                PriceAtBooking = createAppointmentRequest.PriceAtBooking,
                 Notes = createAppointmentRequest.Notes
             };
 
