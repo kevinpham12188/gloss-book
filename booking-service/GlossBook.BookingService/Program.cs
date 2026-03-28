@@ -9,8 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 builder.Services.AddDbContext<BookingDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
@@ -29,7 +31,7 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

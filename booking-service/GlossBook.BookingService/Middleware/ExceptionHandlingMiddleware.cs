@@ -1,4 +1,5 @@
 using GlossBook.BookingService.DTOs;
+using GlossBook.BookingService.Exceptions;
 
 namespace GlossBook.BookingService.Middleware
 {
@@ -22,15 +23,16 @@ namespace GlossBook.BookingService.Middleware
             }
         }
 
-        private static async Task HandleExceptionAsync(HttpContext context, Exception e)
+        private static async Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = 500;
-
+            var statusCode = ex is BaseCustomException customEx ? customEx.StatusCode : 500;
+            var message = ex is BaseCustomException ? ex.Message : "An unexpected error occurred. Please try again later.";
+            context.Response.StatusCode = statusCode;
             var response = new ApiResponse<object>
             {
-                StatusCode = 500,
-                Message = "An unexpected error occurred. Please try again later.",
+                StatusCode = statusCode,
+                Message = message,
                 Data = null
             };
 
