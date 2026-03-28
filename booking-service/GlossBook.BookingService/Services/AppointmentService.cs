@@ -1,5 +1,6 @@
 using GlossBook.BookingService.DTOs.Requests;
 using GlossBook.BookingService.DTOs.Responses;
+using GlossBook.BookingService.Exceptions;
 using GlossBook.BookingService.Models;
 using GlossBook.BookingService.Repositories.Interfaces;
 using GlossBook.BookingService.Services.Interfaces;
@@ -17,6 +18,7 @@ namespace GlossBook.BookingService.Services
         #region Public Methods
         public async Task<AppointmentResponse> CreateAppointmentAsync(CreateAppointmentRequest createAppointmentRequest)
         {
+            ValidateRequest(createAppointmentRequest);
             var appointment = new Appointment
             {
                 ClientId = createAppointmentRequest.ClientId,
@@ -43,6 +45,36 @@ namespace GlossBook.BookingService.Services
                 Notes = createdAppointment.Notes,
                 CreatedAt = createdAppointment.CreatedAt
             };
+        }
+        #endregion
+
+        #region Private Methods
+        private static void ValidateRequest(CreateAppointmentRequest request) 
+        {
+            if(request.ClientId == Guid.Empty)
+            {
+                throw new ValidationException("Client ID is required.");
+            }
+            if(request.TechnicianId == Guid.Empty)
+            {
+                throw new ValidationException("Technician ID is required.");
+            }
+            if(request.ServiceId == Guid.Empty)
+            {
+                throw new ValidationException("Service ID is required.");
+            }
+            if(request.StartTime < DateTimeOffset.UtcNow)
+            {
+                throw new ValidationException("Start time must not be in the past");
+            }
+            if(request.EndTime < request.StartTime)
+            {
+                throw new ValidationException("End time must be after start time");
+            }
+            if(request.PriceAtBooking <= 0)
+            {
+                throw new ValidationException("Price must be greater than 0");
+            }
         }
         #endregion
     }
