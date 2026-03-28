@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 builder.Services.AddDbContext<BookingDbContext>(options =>
 {
@@ -29,7 +28,7 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
