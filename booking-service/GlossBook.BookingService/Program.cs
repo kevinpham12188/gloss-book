@@ -9,7 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 builder.Services.AddDbContext<BookingDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
